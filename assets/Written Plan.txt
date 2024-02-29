@@ -3,4 +3,8 @@ Plan to crush bugs - puzzle game.
 Bug 1: (Fix Plan)
 
 The function handleDrop has a parameter of prevent event guided by an If statement,
-using the 'this' element to determine whether there is a piece in the drop zone, if not then appending the dragged piece as a child element of 'this' 
+using the 'this' element to determine whether there is a piece in the drop zone, if not then appending the dragged piece as a child element of 'this'.
+
+
+Bug 2: (fix  plan)
+Create a function that resets the puzzle by removing the puzzle piece on the drop zone, with the IF statement along a 'contain' and 'appendChild' parameters...also have a function background Image change that has the function of the reset function created that changes the thumbnails from the dragzone

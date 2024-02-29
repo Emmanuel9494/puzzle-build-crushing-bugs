@@ -14,8 +14,8 @@ let theButtons = document.querySelectorAll('#buttonHolder img'),
 	reset = document.querySelector('#resetBut'),
 	// store the dragged piece in a global variable
 	// because we need it in the handleDrop function
-	draggedPiece,
-	imgcount = 0;
+	draggedPiece;
+
 
 // step 3
 // functionality always goes in the middle -> how do we want
@@ -29,6 +29,14 @@ function changeBGImage() {
 	// bug fix #2 should go here. it's at most 3 lines of JS code.
 	puzzleBoard.style.backgroundImage = `url(images/backGround${this.id}.jpg)`;
 
+	puzzlePieces[0].src = `images/topLeft${this.id}.jpg`;
+	puzzlePieces[1].src = `images/topRight${this.id}.jpg`;
+	puzzlePieces[2].src = `images/bottomLeft${this.id}.jpg`;
+	puzzlePieces[3].src = `images/bottomRight${this.id}.jpg`;
+
+
+	resetPuzzle();
+
 	
 }
 
@@ -40,7 +48,7 @@ function handleStartDrag() {
 }
 
 function handleDragOver(event) { 
-	event.preventDefault(); // e is shorthand for event
+	event.preventDefault(); 
 	// this overrides the default dragover behaviour
 	console.log('dragged over me'); 
 }
@@ -54,6 +62,23 @@ function handleDrop(event) {
     } else {
         console.log('puzzle piece in zone ');
     }
+}
+
+
+function resetPuzzle() {
+    puzzlePieces.forEach(function(piece) {
+        if (piece.parentElement.classList.contains('drop-zone')) {
+            puzzleBoard.appendChild(piece);
+        }
+    });
+
+    puzzlePieces.forEach(function(piece) {
+        document.querySelector(".puzzle-pieces").appendChild(piece);
+    });
+
+    dropZones.forEach(function(zone) {
+        zone.style.backgroundImage = '';
+    });
 }
 
 
