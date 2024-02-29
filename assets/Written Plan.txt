@@ -1,1 +1,6 @@
 Plan to crush bugs - puzzle game.
+
+Bug 1: (Fix Plan)
+
+The function handleDrop has a parameter of prevent event guided by an If statement,
+using the 'this' element to determine whether there is a piece in the drop zone, if not then appending the dragged piece as a child element of 'this' 
