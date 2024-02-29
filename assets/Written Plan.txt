@@ -7,4 +7,6 @@ using the 'this' element to determine whether there is a piece in the drop zone,
 
 
 Bug 2: (fix  plan)
-Create a function that resets the puzzle by removing the puzzle piece on the drop zone, with the IF statement along a 'contain' and 'appendChild' parameters...also have a function background Image change that has the function of the reset function created that changes the thumbnails from the dragzone
+
+Create a function that resets the puzzle by removing the puzzle piece on the drop zone, with the IF statement along a 'contain' and 'appendChild' parameters...also have a function of background Image change that has the function of the reset function created that changes the thumbnails from the dragzone
+
