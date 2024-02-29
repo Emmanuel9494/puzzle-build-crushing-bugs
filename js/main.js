@@ -6,14 +6,16 @@
 // let theButton = document.querySelector("#buttonOne");
 
 // create a 1 to many connection with a variable -> querySelectorAll("queryString")
-let theButtons = document.querySelectorAll("#buttonHolder img"),
-	theHeading = document.querySelector("#headLine h1"),
-	puzzleBoard = document.querySelector(".puzzle-board"),
-	puzzlePieces = document.querySelectorAll(".puzzle-pieces img"),
+let theButtons = document.querySelectorAll('#buttonHolder img'),
+	theHeading = document.querySelector('#headLine h1'),
+	puzzleBoard = document.querySelector('.puzzle-board'),
+	puzzlePieces = document.querySelectorAll('.puzzle-pieces img'),
 	dropZones = document.querySelectorAll('.drop-zone'),
+	reset = document.querySelector('#resetBut'),
 	// store the dragged piece in a global variable
 	// because we need it in the handleDrop function
-	draggedPiece;
+	draggedPiece,
+	imgcount = 0;
 
 // step 3
 // functionality always goes in the middle -> how do we want
@@ -26,6 +28,8 @@ function changeBGImage() {
 
 	// bug fix #2 should go here. it's at most 3 lines of JS code.
 	puzzleBoard.style.backgroundImage = `url(images/backGround${this.id}.jpg)`;
+
+	
 }
 
 function handleStartDrag() { 
@@ -35,21 +39,24 @@ function handleStartDrag() {
 	draggedPiece = this;
 }
 
-function handleDragOver(e) { 
-	e.preventDefault(); // e is shorthand for event
+function handleDragOver(event) { 
+	event.preventDefault(); // e is shorthand for event
 	// this overrides the default dragover behaviour
 	console.log('dragged over me'); 
 }
 
-function handleDrop(e) { 
-	e.preventDefault();
-	console.log('dropped something on me');
-	// bug fix #1 should go here, and it's at most 3 lines of JS code
+function handleDrop(event) {
+    event.preventDefault();
+    console.log('dropping something on me');
 
-	// this line is going to move the dragged piece from the left side of the board
-	// into whatever drop zone we choose. appendChild means "add element to the container"
-	this.appendChild(draggedPiece);
+    if (this.children.length === 0) {
+        this.appendChild(draggedPiece);
+    } else {
+        console.log('puzzle piece in zone ');
+    }
 }
+
+
 // step 2
 // event handling always goes at the bottom => 
 // how do we want users to interact with our app
@@ -69,3 +76,5 @@ dropZones.forEach(zone => zone.addEventListener("dragover", handleDragOver));
 
 // add the drop event handling
 dropZones.forEach(zone => zone.addEventListener("drop", handleDrop));
+
+reset.addEventListener("click", resetPuzzle);
